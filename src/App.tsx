@@ -7,6 +7,9 @@ import IconSearch from './assets/icon-search.png'
 import IconRightArrow from './assets/icon-right-arrow.png'
 import IconEye from './assets/icon-eye.png'
 import IconStar from './assets/icon-star.png'
+import IconBottom1 from './assets/icon-bottom-1.png'
+import IconBottom2 from './assets/icon-bottom-2.png'
+import IconBottom3 from './assets/icon-bottom-3.png'
 
 import axios from 'axios'
 import {useEffect, useState} from "react";
@@ -97,6 +100,19 @@ function App() {
                         </div>
                     </div>
                 </div>)}
+            </div>
+            <div className="home-bottom">
+                <div className="wrap">
+                    <div className="home">
+                        <img src={IconBottom1} alt=""/>
+                        <span>Home</span>
+                    </div>
+                    <img src={IconBottom3} alt=""/>
+                    <div className="mine">
+                        <img src={IconBottom2} alt=""/>
+                        <span>Mine</span>
+                    </div>
+                </div>
             </div>
         </>
 
