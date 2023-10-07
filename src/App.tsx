@@ -1,5 +1,6 @@
-import Home from "./Home.tsx";
 import {useEffect, useState} from "react";
+import './App.scss'
+import Home from "./Home.tsx";
 import Detail from "./Detail.tsx";
 
 function App() {

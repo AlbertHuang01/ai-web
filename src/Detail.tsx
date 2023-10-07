@@ -27,7 +27,7 @@ const Detail = (props: DetailProps) => {
         })
     }, [currentFictionId]);
 
-    return <div className='page-wrap'>
+    return <div className='detail-page-wrap'>
         <div className="nav">
             <div className="wrap">
                 <img src={NavLeft} alt="" onClick={() => setShowHome(true)}/>
@@ -50,51 +50,55 @@ const Detail = (props: DetailProps) => {
             </Swiper>
         </div>
 
-        <div className="title">{fiction?.title}</div>
+        <div className="limit-container">
+            <div className="title">{fiction?.title}</div>
 
-        <div className="author">
-            <img src={fiction?.author.avatar} alt=""/>
-            {fiction?.author.name}
-        </div>
+            <div className="author">
+                <img src={fiction?.author.avatar} alt=""/>
+                {fiction?.author.name}
+            </div>
 
-        <p className='content'>{fiction?.content}</p>
+            <p className='content'>{fiction?.content}</p>
 
-        <div className="topics">
-            {fiction?.topics.map((item, index) => <span key={index}>#{item}</span>)}
-        </div>
-        <div className="topics">
-            {fiction?.topics.map((item, index) => <span key={index}>#{item}</span>)}
-        </div>
+            <div className="topics">
+                {fiction?.topics.map((item, index) => <span key={index}>#{item}</span>)}
+            </div>
+            <div className="topics">
+                {fiction?.topics.map((item, index) => <span key={index}>#{item}</span>)}
+            </div>
 
-        <div className="tags">
-            {fiction?.tags.map((item, index) => <span key={index}>{item}</span>)}
-        </div>
+            <div className="tags">
+                {fiction?.tags.map((item, index) => <span key={index}>{item}</span>)}
+            </div>
 
-        <div className="fiction-data">
-            <div className="group">
-                <div className="circle-group">
-                    <img src={GrayCircle} alt=""/>
-                    <img src={GrayCircle} alt=""/>
-                    <img src={GrayCircle} alt=""/>
+            <div className="fiction-data">
+                <div className="group">
+                    <div className="circle-group">
+                        <img src={GrayCircle} alt=""/>
+                        <img src={GrayCircle} alt=""/>
+                        <img src={GrayCircle} alt=""/>
+                    </div>
+                    <div className="contributors">+{fiction?.contributor_num} contributors</div>
                 </div>
-                <div className="contributors">+{fiction?.contributor_num} contributors</div>
-            </div>
-            <div className="star">
-                <img src={IconStartBlack} alt=""/>
-                {fiction?.start_num}
-            </div>
+                <div className="star">
+                    <img src={IconStartBlack} alt=""/>
+                    {fiction?.start_num}
+                </div>
 
 
-        </div>
-        <div className="enter">
-            <div className="wrap">
-                Enter Dream
+            </div>
+            <div className="enter">
+                <div className="wrap">
+                    Enter Dream
+                </div>
+            </div>
+            <div className='view-detail'>
+                View Dream Details
+                <img src={IconBlackArrow} alt=""/>
             </div>
         </div>
-        <div className='view-detail'>
-            View Dream Details
-            <img src={IconBlackArrow} alt=""/>
-        </div>
+
+
     </div>
 }
 

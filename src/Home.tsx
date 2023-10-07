@@ -44,7 +44,7 @@ const Home = (props: HomeProps) => {
         })
     }, [mainCategoryId, subCategoryId]);
 
-    return <>
+    return <div className='home-page-wrap'>
         <img src={IconMenu} alt="" className='menu'/>
         <div className="search">
             <img src={IconSearch} alt=""/>
@@ -125,7 +125,7 @@ const Home = (props: HomeProps) => {
                 </div>
             </div>
         </div>
-    </>
+    </div>
 }
 
 export default Home
