@@ -1,6 +1,124 @@
-.box {
+:root {
+  height: 100%;
+}
+
+.menu {
   width: 36px;
   height: 36px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
+  position: fixed;
+  top: 25px;
+  right: 12px;
+}
+
+.search {
+  width: 89.767%;
+  height: 36px;
+  border: none;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(#15097A, #FF006A);
+  padding: 1.5px;
+  margin: 83px auto 0 auto;
+  border-radius: 20px;
+  background-clip: content-box, padding-box;
+  text-align: center;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 24.38px;
+    height: 24px;
+    margin-left: 11.7px;
+    margin-right: 14.22px;
+  }
+
+  input {
+    border: none;
+    outline: none;
+  }
+
+  input::placeholder {
+    color: rgba(6, 44, 129, 0.58);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 21px;
+
+  }
+}
+
+.home-swiper {
+  border: 5px solid rgba(255, 89, 221, 0.18);
+  border-radius: 10px;
+  margin-top: 23px;
+
+  .swiper {
+    overflow-y: visible;
+  }
+
+  .swiper-slide {
+    border-radius: 10px;
+    height: 266px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .swiper-pagination {
+    --swiper-pagination-bottom: -20px;
+
+    .swiper-pagination-bullet-active {
+      width: 9px;
+    }
+
+    .swiper-pagination-bullet {
+      --swiper-pagination-bullet-width: 6px;
+      --swiper-pagination-bullet-height: 6px;
+      --swiper-pagination-bullet-inactive-opacity: 1;
+      --swiper-pagination-bullet-inactive-color: #C4C4C4;
+      --swiper-pagination-color: #C84B6A;
+    }
+  }
+
+  .text {
+    font-family: Poppins;
+    font-weight: 700;
+    color: #000;
+    background: linear-gradient(270deg, #FFF 0%, rgba(255, 255, 255, 0.29) 51.15%, rgba(255, 255, 255, 0.12) 59.9%, rgba(255, 255, 255, 0.00) 100%);
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &-wrap {
+      width: 129px;
+      height: 100%;
+      position: absolute;
+      right: 0;
+    }
+
+    .title {
+      font-size: 24px;
+
+      line-height: 36px;
+    }
+
+    .content {
+      color: #051222;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 18px;
+    }
+
+    .btn {
+      margin-top: 7px;
+      font-size: 14px;
+      width: 108px;
+      height: 35px;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      background-image: url('./assets/icon-get-started.png');
+    }
+  }
 }
