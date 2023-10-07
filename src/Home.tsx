@@ -16,11 +16,21 @@ import axios from "axios";
 
 import './Home.scss'
 
-const Home = () => {
+interface HomeProps {
+    setCurrentFictionId: (num: number) => void
+}
+
+const Home = (props: HomeProps) => {
+    const {setCurrentFictionId} = props
+
     const [carouselList, setCarouselList] = useState<Carousel[]>([])
     const [fictionList, setFictionList] = useState<Fiction[]>([])
 
-    const [categoryId, setCategoryId] = useState(-1)
+    const [mainCategoryId, setMainCategoryId] = useState('Recommended')
+    const [mainCategory] = useState(['Recommended', 'Fan Fiction', 'Sci-fi', 'RPG'])
+
+    const [subCategoryId, setSubCategoryId] = useState('Default')
+    const [subCategory] = useState(['Default', 'Recent', 'Hot', 'Nodes'])
 
     useEffect(() => {
         axios.get<Carousel[]>('http://localhost:3000/ai/carousels').then((response) => {
@@ -32,7 +42,7 @@ const Home = () => {
         axios.get<Fiction[]>('http://localhost:3000/ai/fictions').then((response) => {
             setFictionList(response.data)
         })
-    }, []);
+    }, [mainCategoryId, subCategoryId]);
 
     return <>
         <img src={IconMenu} alt="" className='menu'/>
@@ -63,21 +73,22 @@ const Home = () => {
             </Swiper>
         </div>
         <ul className='category category-main'>
-            <li className='active'>Recommended</li>
-            <li>Fan Fiction</li>
-            <li>Sci-fi</li>
-            <li>RPG</li>
+            {mainCategory.map(item =>
+                <li key={item}
+                    onClick={() => setMainCategoryId(item)}
+                    className={`${mainCategoryId === item ? 'active' : ''}`}>{item}</li>)}
             <li className='arrow'><img src={IconRightArrow} alt=""/></li>
         </ul>
         <ul className='category category-sub'>
-            <li className='active'>Default</li>
-            <li>Recent</li>
-            <li>Hot</li>
-            <li>Nodes</li>
+            {subCategory.map(item =>
+                <li key={item}
+                    onClick={() => setSubCategoryId(item)}
+                    className={`${subCategoryId === item ? 'active' : ''}`}>{item}</li>)}
             <li>Filter</li>
         </ul>
         <div className="fiction-list">
-            {fictionList.map(item => <div className="fiction-item" key={item.id}>
+            {fictionList.map(item => <div className="fiction-item" key={item.id}
+                                          onClick={() => setCurrentFictionId(item.id)}>
 
                 <div className="main">
                     <img src={item.swipers[0]} alt=""/>

@@ -14,17 +14,18 @@ import IconBlackArrow from './assets/icon-black-arrow.png'
 
 interface DetailProps {
     setShowHome: (bool: boolean) => void
+    currentFictionId: number
 }
 
 const Detail = (props: DetailProps) => {
-    const {setShowHome} = props
+    const {setShowHome, currentFictionId} = props
     const [fiction, setFiction] = useState<Fiction>()
 
     useEffect(() => {
-        axios.get<Fiction>('http://localhost:3000/ai/fictions/1').then((response) => {
+        axios.get<Fiction>(`http://localhost:3000/ai/fictions/${currentFictionId}`).then((response) => {
             setFiction(response.data)
         })
-    }, []);
+    }, [currentFictionId]);
 
     return <div className='page-wrap'>
         <div className="nav">
