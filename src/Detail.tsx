@@ -1,8 +1,8 @@
-import {Navigation, Pagination} from "swiper/modules";
+import {Navigation} from "swiper/modules";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Carousel, Fiction} from "./types.ts";
+import {Fiction} from "./types.ts";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './Detail.scss'

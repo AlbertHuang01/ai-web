@@ -32,7 +32,7 @@ export interface Fiction {
     author: Author;
 }
 
-export class Author {
+export interface Author {
     id: number;
 
     avatar: string
