@@ -15,6 +15,7 @@ import {Carousel, Fiction} from "./types.ts";
 import axios from "axios";
 
 import './Home.scss'
+import { basePath } from './App.tsx';
 
 interface HomeProps {
     setCurrentFictionId: (num: number) => void
@@ -33,14 +34,21 @@ const Home = (props: HomeProps) => {
     const [subCategory] = useState(['Default', 'Recent', 'Hot', 'Nodes'])
 
     useEffect(() => {
-        axios.get<Carousel[]>('http://localhost:3000/ai/carousels').then((response) => {
-            setCarouselList(response.data)
+        axios.get<Carousel[]>(basePath+'/ai/carousels').then((response) => {
+            setCarouselList(response.data.map(item=>{
+                item.img_url=item.img_url.replace('http://localhost:3000',basePath)
+                return item
+            }))
         })
     }, []);
 
     useEffect(() => {
-        axios.get<Fiction[]>('http://localhost:3000/ai/fictions').then((response) => {
-            setFictionList(response.data)
+        axios.get<Fiction[]>(basePath+'/ai/fictions').then((response) => {
+            setFictionList(response.data.map(item=>{
+                item.author.avatar=item.author.avatar.replace('http://localhost:3000',basePath)
+                item.swipers=item.swipers.map(i=>i.replace('http://localhost:3000',basePath))
+                return item
+            }))
         })
     }, [mainCategoryId, subCategoryId]);
 

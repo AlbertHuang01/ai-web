@@ -11,6 +11,7 @@ import NavRight from './assets/nav-right.png'
 import GrayCircle from './assets/gray-circle.png'
 import IconStartBlack from './assets/icon-star-black.png'
 import IconBlackArrow from './assets/icon-black-arrow.png'
+import { basePath } from "./App.tsx";
 
 interface DetailProps {
     setShowHome: (bool: boolean) => void
@@ -22,8 +23,11 @@ const Detail = (props: DetailProps) => {
     const [fiction, setFiction] = useState<Fiction>()
 
     useEffect(() => {
-        axios.get<Fiction>(`http://localhost:3000/ai/fictions/${currentFictionId}`).then((response) => {
-            setFiction(response.data)
+        axios.get<Fiction>(`${basePath}/ai/fictions/${currentFictionId}`).then((response) => {
+            const res=response.data
+            res.author.avatar=res.author.avatar.replace('http://localhost:3000',basePath)
+            res.swipers=res.swipers.map(item=>item.replace('http://localhost:3000',basePath))
+            setFiction(res)
         })
     }, [currentFictionId]);
 
